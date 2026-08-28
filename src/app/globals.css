@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ========================================
+   CUSTOM THEME - Mezin Food Products
+   Warm Organic Food Theme
+   ======================================== */
+
+@theme {
+  /* Primary Colors */
+  --color-primary: #2E7D32;
+  --color-primary-light: #4CAF50;
+  --color-primary-dark: #1B5E20;
+  --color-primary-50: #E8F5E9;
+  --color-primary-100: #C8E6C9;
+  --color-primary-200: #A5D6A7;
+  --color-primary-300: #81C784;
+  --color-primary-400: #66BB6A;
+  --color-primary-500: #4CAF50;
+  --color-primary-600: #43A047;
+  --color-primary-700: #388E3C;
+  --color-primary-800: #2E7D32;
+  --color-primary-900: #1B5E20;
+
+  /* Accent - Golden Yellow */
+  --color-accent: #FFC107;
+  --color-accent-light: #FFD54F;
+  --color-accent-dark: #FFA000;
+
+  /* Neutral / Beige */
+  --color-beige: #F7F3E9;
+  --color-beige-light: #FBF9F3;
+  --color-beige-dark: #E8E0CC;
+
+  /* Dark colors */
+  --color-dark: #1A1A1A;
+  --color-dark-gray: #333333;
+  --color-medium-gray: #666666;
+  --color-light-gray: #999999;
+  --color-border: #E5E5E5;
+
+  /* Typography */
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-navbar: 0 2px 20px rgba(0, 0, 0, 0.08);
+  --shadow-button: 0 4px 14px rgba(46, 125, 50, 0.3);
+  --shadow-glow: 0 0 40px rgba(46, 125, 50, 0.15);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Border Radius */
+  --radius-card: 1rem;
+  --radius-button: 0.75rem;
+  --radius-pill: 9999px;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background-color: var(--color-beige-light);
+  overflow-x: hidden;
+}
+
+/* Dark theme */
+html.dark {
+  color-scheme: dark;
+  --color-beige: #1c241d;
+  --color-beige-light: #111712;
+  --color-beige-dark: #2a352c;
+  --color-dark: #f5f7f1;
+  --color-dark-gray: #d9e1d7;
+  --color-medium-gray: #afbaae;
+  --color-light-gray: #859084;
+  --color-border: #314034;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 14px 44px rgba(0, 0, 0, 0.4);
+  --shadow-navbar: 0 2px 20px rgba(0, 0, 0, 0.32);
+}
+
+html.dark body { background-color: #111712; }
+html.dark .bg-white { background-color: #161e17 !important; }
+html.dark [class~="bg-white/90"] { background-color: rgba(22, 30, 23, 0.92) !important; }
+html.dark .bg-beige-light { background-color: #111712 !important; }
+html.dark .bg-beige { background-color: #1c241d !important; }
+html.dark .bg-gray-50 { background-color: #1d271f !important; }
+html.dark .glass { background: rgba(22, 30, 23, 0.78); border-color: rgba(255, 255, 255, 0.12); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ========================================
+   SCROLL PROGRESS BAR
+   ======================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ========================================
+   BUTTON RIPPLE EFFECT
+   ======================================== */
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+
+.btn-ripple:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+  transition: width 0s, height 0s, opacity 0s;
+}
+
+/* ========================================
+   GLASSMORPHISM
+   ======================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   SECTION DIVIDER
+   ======================================== */
+
+.section-divider {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  background: var(--color-beige);
+  border-radius: 0 0 50% 50%;
+}
+
+/* ========================================
+   FLOATING SHAPES
+   ======================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(20px) rotate(-5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-reverse-animation {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* ========================================
+   ORGANIC SHAPES
+   ======================================== */
+
+.organic-blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.organic-blob-2 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ========================================
+   SKELETON LOADING
+   ======================================== */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ========================================
+   FOCUS STYLES FOR ACCESSIBILITY
+   ======================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   SELECTION COLORS
+   ======================================== */
+
+::selection {
+  background: var(--color-primary-200);
+  color: var(--color-primary-900);
+}
